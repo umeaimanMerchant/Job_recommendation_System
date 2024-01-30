@@ -3,5 +3,7 @@ pandas
 keras
 tqdm
 streamlit
-google.generativeai
+importlib
 python-dotenv
+PyPDF2
+spacy
