@@ -1,0 +1,7 @@
+numpy
+pandas
+keras
+tqdm
+streamlit
+google.generativeai
+python-dotenv

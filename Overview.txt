@@ -1,0 +1,37 @@
+version 1.0:
+QnA - 
+    1. based on job description
+    2. based on resume
+
+Output - 
+    1. type of question made by AI
+
+version 2.0:
+QnA - 
+    1. based on job description
+    2. based on resume
+    3. pervious answer
+
+Output - 
+    1. answer of user- area of improvement, 
+
+version 3.0:
+QnA - 
+    1. based on job description
+    2. based on resume
+    3. pervious answer
+    4. video- emotion detection and reaction to questions
+
+Output - 
+    1. answer of user- subject knowledge and self confidences
+
+Version 4.0:
+QnA - 
+    1. Customize options to user
+
+Output - 
+    1. user can ask specific questions
+
+Future
+AI will recall user and their performance
+
