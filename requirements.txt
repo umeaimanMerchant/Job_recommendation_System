@@ -1,11 +1,11 @@
 numpy
 pandas
-setuptools
+setuptools>=50.3.0
 keras
 tqdm
 streamlit
 python-dotenv
 PyPDF2
 spacy
-importlib
+
 
