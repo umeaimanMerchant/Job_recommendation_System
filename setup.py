@@ -4,6 +4,17 @@ setup(
     name='Job_Recommendation_System',
     version='0.0.1',
     packages=find_packages(),
-    install_requires=get_requirements('requirements.txt')
+    install_requires=[
+        numpy,
+        pandas,
+        keras,
+        tqdm,
+        streamlit,
+        importlib,
+        python-dotenv,
+        PyPDF2,
+        spacy,
+        setuptools
+    ],
 
 )
