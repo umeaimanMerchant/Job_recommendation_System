@@ -32,6 +32,7 @@ def input_pdf_text(uploaded_file):
 
 # Spacy
 # Load spaCy model 
+spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
 # skills
