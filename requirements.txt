@@ -7,5 +7,4 @@ streamlit
 python-dotenv
 PyPDF2
 spacy
-en-core-web-sm
 
