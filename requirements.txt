@@ -7,3 +7,4 @@ importlib
 python-dotenv
 PyPDF2
 spacy
+setuptools
