@@ -1,0 +1,11 @@
+ 
+
+Question: What is the SQL command to select all rows from a table?;_ Answer: SELECT * FROM table_name ;_ Diffi_level: easy 
+
+Question: What is the SQL command to insert a new row into a table?;_ Answer: INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);_ Diffi_level: easy 
+
+Question: What is the SQL command to update a row in a table?;_ Answer: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;_ Diffi_level: easy 
+
+Question: What is the SQL command to delete a row from a table?;_ Answer: DELETE FROM table_name WHERE condition;_ Diffi_level: easy 
+
+Question: What is the SQL command to create a new table?;_ Answer: CREATE TABLE table_name (column1 data_type, column2 data_type, ...);_ Diffi_level: easy

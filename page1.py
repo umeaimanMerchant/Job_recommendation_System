@@ -14,7 +14,6 @@ Part 1:
 import streamlit as st
 import os
 import PyPDF2 as pdf
-from dotenv import load_dotenv
 import json
 import spacy
 
@@ -32,7 +31,6 @@ def input_pdf_text(uploaded_file):
 
 # Spacy
 # Load spaCy model 
-#spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
 # skills
@@ -77,7 +75,7 @@ def extract_profession_from_resume(resume_text):
 def show_page():
     st.title("AI Driven Mock Interview Experience")
     st.text("Elevate Your Skills with Personalized Questions")
-    jd=st.text_area("Paste the Job Description")
+    jd=st.text_area("Paste the Job Description (WIP)")
     uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
 
     submit = st.button("Submit")
@@ -85,6 +83,7 @@ def show_page():
     if submit:
         if uploaded_file is not None:
             text=input_pdf_text(uploaded_file)
+            st.success(f"File uploaded Successfully!")
             
             skills_ouput = extract_skills_from_resume(text)
             professions_ouput = extract_profession_from_resume(text)
@@ -93,4 +92,9 @@ def show_page():
             #st.write(professions_ouput)
             st.session_state.skills_ouput = skills_ouput + professions_ouput
             st.session_state.page_index = 1
+
+    if st.button("Add skills Manually"):
+        st.session_state.skills_ouput = []
+        st.session_state.page_index = 1
+
 

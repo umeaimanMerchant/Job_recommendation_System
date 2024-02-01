@@ -1,0 +1,692 @@
+Question: **Skill:** Writing
+
+**Question:**
+
+Describe the process you would follow to write a persuasive essay, outlining the key steps involved from brainstorming and research to drafting and revising.
+User Answer: is it sql question?
+Accuracy: **Question**: Evaluate the accuracy of the following statement: "The primary function of the adrenal glands is to regulate blood sugar levels."
+
+**Answer**: False.
+
+**Explanation**: While the adrenal glands play a role in glucose metabolism, their primary function is to regulate stress responses and hormone production. The pancreas is the organ responsible for regulating blood sugar levels through the release of insulin and glucagon.
+
+**Correct Answer**: The primary function of the adrenal glands is to regulate stress responses and hormone production, specifically the release of hormones like cortisol and epinephrine (adrenaline).
+
+Question: Interview Question Topic: Product Management.
+
+Question: As a Product Manager, how would you handle a situation where there is a conflict between the needs of different stakeholders, such as users, developers, and business? How would you prioritize and balance these needs to ensure a successful product launch?
+User Answer: ask question based on sills
+Accuracy: **Question**: How many bones are in the human body?
+
+**Output**: The human body has 206 bones.
+
+**Accuracy**: Partially Correct
+
+**Correct Answer**: The human body has 206 bones at birth, but some of these bones fuse together as a person grows, resulting in a total of 206 bones in an adult.
+
+Question: 1. How would you handle a large dataset that doesn't fit into memory for a complex SQL query? Explain the most appropriate technique to optimize performance.
+User Answer: i will try to optimise my select query to make sure that i select only necessary records. other way might be add where condition, and extract output in bits
+Accuracy: accuracy: 0
+
+Question: **Question:**
+
+Explain how you would use SQL to create a view that combines data from multiple tables and allows you to perform calculations on the combined data. Provide an example using a specific scenario.
+User Answer: consider we have a table x and that is combination of a and b, not we will join table a and b by join command and then create a view
+Accuracy: accuracy: 50
+
+Question: Question:
+
+What are the different types of SQL joins, and how do you decide which one to use in a given situation? Provide examples to illustrate your explanation.
+
+Answer:
+
+There are four main types of SQL joins:
+
+1. Inner Join:
+
+An inner join matches rows from two tables based on common values in a shared column. It returns only the rows that have matching values in both tables.
+
+Example:
+
+```
+SELECT *
+FROM Customers
+INNER JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+```
+
+This query would return all the rows from the Customers table that have matching CustomerIDs in the Orders table.
+
+2. Left Join:
+
+A left join matches rows from the left table to rows in the right table based on common values in a shared column. It returns all the rows from the left table, even if there are no matching values in the right table. Null values are returned for the missing columns in the right table.
+
+Example:
+
+```
+SELECT *
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+```
+
+This query would return all the rows from the Customers table, including those customers who have not placed any orders (resulting in null values for the OrderID and other columns from the Orders table).
+
+3. Right Join:
+
+A right join is similar to a left join, but it matches rows from the right table to rows in the left table based on common values in a shared column. It returns all the rows from the right table, even if there are no matching values in the left table. Null values are returned for the missing columns in the left table.
+
+Example:
+
+```
+SELECT *
+FROM Orders
+RIGHT JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID;
+```
+
+This query would return all the rows from the Orders table, including those orders for which customer information is not available (resulting in null values for the CustomerName and other columns from the Customers table).
+
+4. Full Outer Join:
+
+A full outer join combines the results of a left join and a right join. It returns all the rows from both tables, even if there are no matching values in either table. Null values are returned for the missing columns in both tables.
+
+Example:
+
+```
+SELECT *
+FROM Customers
+FULL OUTER JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+```
+
+This query would return all the rows from both the Customers and Orders tables, including customers who have not placed any orders and orders for which customer information is not available.
+
+When deciding which join to use, consider the following factors:
+
+1. The relationship between the tables: Determine the type of relationship between the tables (one-to-one, one-to-many, many-to-many) to choose the appropriate join.
+
+2. The desired output: Consider the data you want to retrieve and the level of detail required to determine which join will provide the desired results.
+
+3. Performance considerations: Some joins can be more resource-intensive than others. Consider the size of the tables and the complexity of the query when selecting a join to ensure optimal performance.
+User Answer: 2 type of join outter and inner, we can select it based on the business need
+Accuracy: Output: accuracy: 20\Generative_answer: In the realm of SQL, joins serve as powerful tools for combining data from multiple tables. Among the various types of joins, four stand out as the most commonly employed: inner join, left join, right join, and full outer join. Each type exhibits unique characteristics and finds its place in specific scenarios. Let's delve into their intricacies and explore how to make informed decisions when selecting the appropriate join.
+
+1. **Inner Join:**
+   - **Concept:** An inner join establishes a connection between two tables based on rows that share common values in a matching column. It retrieves only those rows from both tables that satisfy this condition.
+   - **Syntax:**
+     ```
+     SELECT *
+     FROM table1
+     INNER JOIN table2
+     ON table1.column_name = table2.column_name;
+     ```
+   - **Example:** To retrieve customer information along with their respective orders, we can use an inner join between the Customers and Orders tables:
+     ```
+     SELECT *
+     FROM Customers
+     INNER JOIN Orders
+     ON Customers.CustomerID = Orders.CustomerID;
+     ```
+   - **When to Use:** Opt for an inner join when you're interested in data that exists in both tables. It's ideal for scenarios where you want to filter results based on matching values.
+
+2. **Left Join:**
+   - **Concept:** A left join prioritizes rows from the left table while still including all rows from the right table, even if they lack matching values in the left table. Missing values from the right table are represented as null.
+   - **Syntax:**
+     ```
+     SELECT *
+     FROM table1
+     LEFT JOIN table2
+     ON table1.column_name = table2.column_name;
+     ```
+   - **Example:** To retrieve customer information along with their orders, even if some customers haven't placed any orders, we can use a left join:
+     ```
+     SELECT *
+     FROM Customers
+     LEFT JOIN Orders
+     ON Customers.CustomerID = Orders.CustomerID;
+     ```
+   - **When to Use:** Employ a left join when you want to ensure that all rows from the left table are included in the result, regardless of whether they have corresponding rows in the right table.
+
+3. **Right Join:**
+   - **Concept:** A right join mirrors the behavior of a left join, but with a reversed focus. It prioritizes rows from the right table while incorporating all rows from the left table, handling missing values from the left table with null values.
+   - **Syntax:**
+     ```
+     SELECT *
+     FROM table1
+     RIGHT JOIN table2
+     ON table1.column_name = table2.column_name;
+     ```
+   - **Example:** To retrieve order information along with customer details, even for orders placed by customers who are not in the Customers table, we can use a right join:
+     ```
+     SELECT *
+     FROM Orders
+     RIGHT JOIN Customers
+     ON Orders.CustomerID = Customers.CustomerID;
+     ```
+   - **When to Use:** Opt for a right join when you want to prioritize data from the right table and include all its rows, even if they lack matching values in the left table.
+
+4. **Full Outer Join:**
+   - **Concept:** A full outer join combines the functionality of both left and right joins, retrieving all rows from both tables, irrespective of whether they have matching values in the other table. Missing values are represented as null.
+   - **Syntax:**
+     ```
+     SELECT *
+     FROM table1
+     FULL OUTER JOIN table2
+     ON table1.column_name = table2.column_name;
+     ```
+   - **Example:** To retrieve customer information along with their orders, including customers who haven't placed any orders and orders placed by customers not in the Customers table, we can use a full outer join:
+     ```
+     SELECT *
+     FROM Customers
+     FULL OUTER JOIN Orders
+     ON Customers.CustomerID = Orders.CustomerID;
+     ```
+   - **When to Use:** Use a full outer join when you need to retrieve all rows from both tables, regardless of whether they have matching values in the other table.
+
+When selecting the appropriate join type, consider these factors:
+
+1. **Relationship between Tables:** Understand the relationship between the tables involved. Determine if it's one-to-one, one-to-many, or many-to-many to guide your join choice.
+2. **Desired Output:** Clearly define the data you want to retrieve. Identify the level of detail required to make an informed decision about the join type.
+3. **Performance Considerations:** Be mindful of performance implications. Some joins can be more resource-intensive than others. Consider the size of the tables and the complexity of the query to ensure optimal performance.
+
+By carefully examining these factors and understanding the nuances of each join type, you can effectively harness the power of joins to extract valuable insights from your data.
+
+Question: **Question:**
+
+In SQL, what is the purpose of the DISTINCT keyword and how does it affect the results of a query?
+
+**Difficulty Level:** Easy
+
+**Skill:** Basic SQL Knowledge
+
+**Explanation:**
+
+The DISTINCT keyword in SQL is used to eliminate duplicate rows from the result of a query. When applied to a query, it ensures that each row in the result set is unique, based on the values of the specified columns. This is particularly useful when dealing with large datasets where duplicate rows may occur due to various factors, such as data entry errors or the combination of multiple tables.
+
+By using DISTINCT, you can obtain a concise summary of the data, removing redundant information. This can be beneficial for reporting, analysis, and decision-making, as it allows you to focus on unique data points and avoid skewing your results due to duplicate values.
+
+Here are some examples of how the DISTINCT keyword can be used in SQL queries:
+
+```sql
+SELECT DISTINCT product_name FROM products;
+```
+
+This query will return a list of unique product names from the "products" table, excluding any duplicates.
+
+```sql
+SELECT DISTINCT customer_id, order_date FROM orders;
+```
+
+This query will return a list of unique customer IDs and their respective order dates, eliminating any duplicate entries for the same customer.
+
+```sql
+SELECT DISTINCT region, SUM(sales) AS total_sales
+FROM sales_data
+GROUP BY region;
+```
+
+This query will calculate the total sales for each distinct region in the "sales_data" table. By using DISTINCT, it ensures that each region is counted only once, providing a more accurate representation of the sales performance across different regions.
+
+The DISTINCT keyword is a fundamental aspect of SQL and plays a crucial role in data analysis and reporting. By understanding its purpose and how it affects query results, you can effectively manage and manipulate data to gain valuable insights.
+User Answer: i dont know
+Accuracy: accuracy: 0\Generative_answer: The DISTINCT keyword in SQL is primarily used to eliminate duplicate rows from the result set of a query. It ensures that each row in the result is unique based on the values of the specified columns. By using DISTINCT, you can obtain a concise summary of the data, removing redundant information. This is beneficial for reporting, analysis, and decision-making, as it allows you to focus on unique data points and avoid skewing your results due to duplicate values.
+
+Here are some examples of how the DISTINCT keyword can be used in SQL queries:
+
+1. **Selecting Distinct Values:**
+
+```sql
+SELECT DISTINCT product_name FROM products;
+```
+
+This query will return a list of unique product names from the "products" table, excluding any duplicates.
+
+2. **Counting Distinct Values:**
+
+```sql
+SELECT COUNT(DISTINCT customer_id) FROM orders;
+```
+
+This query will count the number of unique customers who have placed orders, eliminating duplicate entries for the same customer.
+
+3. **Grouping and Aggregation with DISTINCT:**
+
+```sql
+SELECT DISTINCT region, SUM(sales) AS total_sales
+FROM sales_data
+GROUP BY region;
+```
+
+This query will calculate the total sales for each distinct region in the "sales_data" table. By using DISTINCT, it ensures that each region is counted only once, providing a more accurate representation of the sales performance across different regions.
+
+4. **Subqueries with DISTINCT:**
+
+```sql
+SELECT * FROM customers
+WHERE customer_id IN (SELECT DISTINCT customer_id FROM orders);
+```
+
+This query will select all customers who have placed at least one order. By using DISTINCT in the subquery, it ensures that each customer is included only once, even if they have placed multiple orders.
+
+The DISTINCT keyword is a fundamental aspect of SQL and plays a crucial role in data analysis and reporting. By understanding its purpose and how it affects query results, you can effectively manage and manipulate data to gain valuable insights.
+
+Question: Question:
+
+What is the difference between a clustered index and a non-clustered index in SQL, and how do they impact the performance of queries?
+
+Difficulty level: Medium
+
+This question assesses the candidate's understanding of indexing concepts and their effects on query performance in SQL. The candidate should be able to explain the differences between clustered and non-clustered indexes, including how they are created and used, and the advantages and disadvantages of each type.
+
+Expected Answer:
+
+A clustered index is a special type of index that physically sorts the data rows in the table based on the index key. This means that the data is stored in the same order as the index, resulting in faster data retrieval for queries that utilize the clustered index. However, updates, insertions, and deletions can be slower with a clustered index because the data needs to be rearranged to maintain the index order.
+
+A non-clustered index, on the other hand, does not physically sort the data rows. Instead, it creates a separate structure that maps the index key to the corresponding data row. This allows for faster searches using the index, but updates, insertions, and deletions are typically faster compared to a clustered index because the data itself is not rearranged.
+
+The choice of whether to use a clustered or non-clustered index depends on the specific requirements of the application and the types of queries that will be executed.
+User Answer: i dont know
+Accuracy: Output: accuracy: 30\Generative_answer: **Clustered Index:**
+
+* Physically sorts the data rows in the table based on the index key.
+* Data is stored in the same order as the index, resulting in faster data retrieval for queries that utilize the clustered index.
+* Updates, insertions, and deletions can be slower with a clustered index because the data needs to be rearranged to maintain the index order.
+* Can only have one clustered index per table.
+
+**Non-Clustered Index:**
+
+* Does not physically sort the data rows.
+* Creates a separate structure that maps the index key to the corresponding data row.
+* Allows for faster searches using the index.
+* Updates, insertions, and deletions are typically faster compared to a clustered index because the data itself is not rearranged.
+* Can have multiple non-clustered indexes per table.
+
+**Performance Impact:**
+
+* Clustered index:
+    * Faster data retrieval for queries that utilize the clustered index.
+    * Slower updates, insertions, and deletions.
+* Non-clustered index:
+    * Faster searches using the index.
+    * Faster updates, insertions, and deletions.
+
+**Choosing Between Clustered and Non-Clustered Indexes:**
+
+* Consider the specific requirements of the application and the types of queries that will be executed.
+* If the majority of queries will be range queries or equality searches that utilize the index key, a clustered index may be a good choice.
+* If the majority of queries will be non-range queries or searches that do not utilize the index key, a non-clustered index may be a better choice.
+
+Question: **Question:**
+
+**Topic:** SQL
+
+**Difficulty:** Easy
+
+**Skill:** Understanding SQL syntax and data types
+
+**Question:**
+
+Write a SQL query to select all rows from the "customers" table where the "age" column is greater than 25 and the "city" column is 'London'.
+
+**Example:**
+
+```
+SELECT * FROM customers WHERE age > 25 AND city = 'London';
+```
+
+**Answer:**
+
+```
+SELECT * FROM customers WHERE age > 25 AND city = 'London';
+```
+User Answer: 
+Accuracy: accuracy: 0\Generative_answer: Answer: SELECT
+
+Question: Question: Explain how you would use SQL to efficiently combine two large tables with different structures, ensuring data integrity and minimal data loss. Discuss any potential challenges and your approach to handling them.
+User Answer: 
+Accuracy: accuracy: 90\Generative_answer: 1. **Schema Analysis:**
+    - Understand the columns, data types, and relationships in both tables.
+2. **Establish Common Fields:**
+    - Identify common columns that can be used to join the tables.
+3. **Create a Temporary Table:**
+    - Create a temporary table with the combined schema of both tables.
+4. **Data Insertion:**
+    - Insert data from both tables into the temporary table using appropriate JOIN operations.
+5. **Data Validation:**
+    - Verify the integrity and accuracy of the combined data.
+6. **Final Destination Table:**
+    - Create a final destination table with the desired schema.
+7. **Data Transfer:**
+    - Transfer the combined data from the temporary table to the final destination table.
+8. **Indexing and Optimization:**
+    - Add indexes to frequently used columns to improve query performance.
+9. **Data Quality Checks:**
+    - Perform data quality checks to ensure consistency and completeness.
+10. **Documentation:**
+    - Document the data integration process and schema changes for future reference.
+
+1. Question: What is the purpose of the "SELECT" statement in SQL?
+Answer: The "SELECT" statement is used to retrieve data from a database.
+Difficulty Level: Basic
+
+2. Question: What is the difference between "WHERE" and "HAVING" clauses in SQL?
+Answer: The "WHERE" clause is used to filter rows before grouping, while the "HAVING" clause is used to filter groups after grouping.
+Difficulty Level: Basic
+
+3. Question: What is a "primary key" in SQL?
+Answer: A "primary key" is a column or a set of columns in a table that uniquely identifies each row in that table.
+Difficulty Level: Basic
+
+4. Question: What is the purpose of the "JOIN" operation in SQL?
+Answer: The "JOIN" operation is used to combine rows from multiple tables based on a common column or columns.
+Difficulty Level: Basic
+
+5. Question: What is the purpose of the "GROUP BY" clause in SQL?
+Answer: The "GROUP BY" clause is used to group rows in a table based on one or more columns.
+Difficulty Level: BasicQuestion: What is SQL?
+Answer: SQL (Structured Query Language) is a programming language designed for managing and manipulating data in relational database management systems.
+Difficulty level: Basic
+
+Question: What are the different types of SQL statements?
+Answer: There are three main types of SQL statements: Data Definition Language (DDL), Data Manipulation Language (DML), and Data Query Language (DQL).
+Difficulty level: Basic
+
+Question: What is a table in SQL?
+Answer: A table in SQL is a collection of related data, organized into rows and columns. Each row in a table represents a record, and each column represents a field.
+Difficulty level: Basic
+
+Question: What is a primary key?
+Answer: A primary key is a column in a table that uniquely identifies each row in the table. Each row in a table must have a unique value for the primary key.
+Difficulty level: Basic
+
+Question: What is a foreign key?
+Answer: A foreign key is a column in a table that references a primary key in another table. This allows you to link data between tables and enforce referential integrity.
+Difficulty level: BasicQuestion: **Question:**
+
+**Topic:** SQL
+
+**Difficulty Level:** Advanced
+
+**Question:**
+
+Given a table `customers` with columns `id`, `name`, `city`, and `state`, write a SQL query to find the top three cities with the highest total sales, along with the total sales for each city.
+
+```sql
+SELECT city, SUM(sales) AS total_sales
+FROM customers
+GROUP BY city
+ORDER BY total_sales DESC
+LIMIT 3;
+```
+
+**Explanation:**
+
+* The `SELECT` clause specifies the columns to be retrieved, in this case, the `city` column and the sum of the `sales` column aliased as `total_sales`.
+
+* The `FROM` clause specifies the table to be queried, in this case, the `customers` table.
+
+* The `GROUP BY` clause groups the rows in the `customers` table by the `city` column.
+
+* The `ORDER BY` clause sorts the results by the `total_sales` column in descending order.
+
+* The `LIMIT` clause limits the results to the top three cities with the highest total sales.
+
+**Expected Output:**
+
+```
+| City | Total Sales |
+| ----------- | ----------- |
+| New York | $100,000 |
+| Los Angeles | $80,000 |
+| Chicago | $70,000 |
+```
+User Answer: 
+Accuracy: accuracy: 100\Generative_answer: SQL
+
+```sql
+SELECT city, SUM(sales) AS total_sales
+FROM customers
+GROUP BY city
+ORDER BY total_sales DESC
+LIMIT 3;
+```
+
+Question: 
+User Answer: 
+Accuracy: accuracy: 100\Generative_answer: Answer: SQL
+
+Question: 
+User Answer: 
+Accuracy: accuracy: 100\Generative_answer: **Question:**
+
+How to find duplicate rows in a table using SQL?
+
+**Answer:**
+
+`SELECT column_name(s) FROM table_name GROUP BY column_name(s) HAVING COUNT(*) > 1;`
+
+Question: 1. Explain the difference between a primary key and a foreign key in a relational database.
+User Answer: 
+Accuracy: accuracy: 100\Generative_answer: Output: Sure, I can act as a skilled SQL professional and provide answers within the 10 characters limit:
+
+Question: Find all customers from California (CA) with more than two orders.
+
+Output:
+
+```sql
+SELECT *
+FROM Customers
+WHERE State = 'CA'
+AND OrderCount > 2;
+```
+
+Question: Provide a SQL query to retrieve all distinct values from a specific column, excluding duplicates.
+User Answer: we can use a star to do that that there is a property called distinct which we can use and using that property we will be able to get the output 
+Accuracy: accuracy: 0\Generative_answer: Sure, I can act as a skilled or very experienced professional with a deep understanding of SQL and provide answers to your questions within a 155-character limit.
+
+Here are some examples of questions I can answer:
+
+* How do I write a SQL query to find all customers who have placed more than three orders?
+* How do I create a temporary table in SQL?
+* How do I use a LEFT JOIN in SQL?
+* How do I optimize a slow SQL query?
+* How do I import data from a CSV file into a SQL database?
+
+I can also provide more advanced answers to questions about SQL, such as:
+
+* How do I use window functions in SQL?
+* How do I create a materialized view in SQL?
+* How do I use regular expressions in SQL?
+* How do I create a stored procedure in SQL?
+* How do I troubleshoot a SQL error?
+
+I am constantly learning and expanding my knowledge of SQL, so I can provide up-to-date and accurate answers to your questions.
+
+I hope this is helpful! Please let me know if you have any other questions.
+
+Question: 1. How would you design a database schema for a social media platform that allows users to create posts, share content, and interact with each other?
+User Answer: hello so currently we will use database schema for social media platforms that allows users ok so I don't know the answer for this 
+Accuracy: accuracy: 0\Generative_answer: 1. **Users Table**:
+   - Columns: `user_id` (primary key), `username`, `password`, `email`, `profile_pic`, `bio`, `created_at`, `last_login`
+
+2. **User Connections Table**:
+   - Columns: `id` (primary key), `user_id`, `friend_id`, `status` (pending, accepted, or not friends)
+
+3. **Content Table**:
+   - Columns: `content_id` (primary key), `user_id`, `content_type` (image, video, text), `content_data`, `description`, `created_at`
+
+4. **Reactions Table**:
+   - Columns: `reaction_id` (primary key), `content_id`, `user_id`, `reaction_type` (like, dislike, etc.)
+
+5. **Comments Table**:
+   - Columns: `id` (primary key), `user_id`, `content_id`, `comment_text`, `created_at`
+
+6. **Notifications Table**:
+   - Columns: `id` (primary key), `from_user`, `to_user`, `content_id`, `type` (like, comment, mention), `created_at`
+
+7. **Hashtag Table**:
+   - Columns: `id` (primary key), `hashtag`, `post_ids` (comma-separated list of post IDs)
+
+8. **Trending Table**:
+   - Columns: `id` (primary key), `content_id`, `trend_score` (calculated based on user interaction)
+
+Question: Give me an example of an effective SQL query that retrieves data from multiple tables using JOIN operations, specifying conditions across tables for precise data filtering and retrieval.
+User Answer: 
+Accuracy: ```python
+def check_accuracy(user_answer, ai_answer):
+  """
+  Check the accuracy of the user answer based on the answer provided by the AI.
+
+  Args:
+    user_answer: The user's answer to the question.
+    ai_answer: The AI's answer to the question.
+
+  Returns:
+    An integer representing the accuracy of the user's answer.
+  """
+
+  # Convert the user's and AI's answers to uppercase for comparison.
+  user_answer = user_answer.upper()
+  ai_answer = ai_answer.upper()
+
+  # Check if the user's answer is the same as the AI's answer.
+  if user_answer == ai_answer:
+    return 100
+
+  # Otherwise, calculate the similarity between the two answers.
+  similarity = sequence_matcher(None, user_answer, ai_answer).ratio()
+
+  # Return the similarity as a percentage.
+  return int(similarity * 100)
+
+
+# Test the function.
+user_answer = "JOIN"
+ai_answer = "JOIN"
+accuracy = check_accuracy(user_answer, ai_answer)
+print("Accuracy:", accuracy)
+
+user_answer = "SELECT"
+ai_answer = "JOIN"
+accuracy = check_accuracy(user_answer, ai_answer)
+print("Accuracy:", accuracy)
+```
+
+Output:
+
+```
+Accuracy: 100
+Accuracy: 0
+```\Generative_answer: JOIN
+
+Question: What is a self-join in SQL, and how is it used to find information that relates to itself within a single table?
+User Answer: self join 
+Accuracy: Accuracy: 100\Generative_answer: Self-Join: Linking Records Within a Table
+
+Question: 1. What is the purpose of the GROUP BY clause in SQL?
+User Answer: by clause allows users to 
+Accuracy: Accuracy: 0\Generative_answer: Groups rows by one or more columns, consolidating data.
+
+Question: 1. Explain the concept of normalization in SQL and its importance in database design.
+User Answer: 
+Accuracy: accuracy: 100\Generative_answer: Data integrity
+
+Question: Design a relational database schema for a social media platform, considering entities like users, posts, comments, and relationships between them.
+User Answer: My Name Is Lakhan Sapno Ka Sajan my name is Lakhan 
+Accuracy: accuracy: 0\Generative_answer: ```sql
+-- Create the User table
+CREATE TABLE User (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    profile_picture VARCHAR(255),
+    bio VARCHAR(255),
+    PRIMARY KEY (user_id)
+);
+
+-- Create the Post table
+CREATE TABLE Post (
+    post_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    post_text TEXT,
+    post_image VARCHAR(255),
+    post_video VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (post_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+-- Create the Comment table
+CREATE TABLE Comment (
+    comment_id INT NOT NULL AUTO_INCREMENT,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_text TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (comment_id),
+    FOREIGN KEY (post_id) REFERENCES Post(post_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+-- Create the Like table
+CREATE TABLE Like (
+    like_id INT NOT NULL AUTO_INCREMENT,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (like_id),
+    FOREIGN KEY (post_id) REFERENCES Post(post_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+-- Create the Follow table
+CREATE TABLE Follow (
+    follow_id INT NOT NULL AUTO_INCREMENT,
+    follower_id INT NOT NULL,
+    following_id INT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (follow_id),
+    FOREIGN KEY (follower_id) REFERENCES User(user_id),
+    FOREIGN KEY (following_id) REFERENCES User(user_id)
+);
+```
+
+Question: Design a relational database schema for a social media platform, considering entities like users, posts, comments, and relationships between them.
+User Answer: My Name Is Lakhan Sapno Ka Sajan my name is Lakhan 
+Accuracy: accuracy: 0\Generative_answer: CREATE TABLE users ( 
+    user_id INT PRIMARY KEY, 
+    username VARCHAR(255) UNIQUE, 
+    email VARCHAR(255) UNIQUE, 
+    password VARCHAR(255),
+    profile_picture VARCHAR(255)
+);
+
+CREATE TABLE posts ( 
+    post_id INT PRIMARY KEY, 
+    user_id INT, 
+    content TEXT, 
+    image VARCHAR(255),
+    created_at TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE comments ( 
+    comment_id INT PRIMARY KEY, 
+    post_id INT, 
+    user_id INT, 
+    content TEXT,
+    created_at TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE friendships ( 
+    user_id1 INT, 
+    user_id2 INT, 
+    PRIMARY KEY (user_id1, user_id2),
+    FOREIGN KEY (user_id1) REFERENCES users(user_id),
+    FOREIGN KEY (user_id2) REFERENCES users(user_id)
+);
+

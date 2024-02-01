@@ -60,9 +60,10 @@ def show_page():
     # "Next" button to go to the next Streamlit app
     if st.button("Next", key="next_button"):
         # You can replace this with the code to launch the next Streamlit app
-        st.success("Going to the next Streamlit app.")
+        st.session_state.page_index = 2
+        #st.success("Going to the next Streamlit app.")
 
-        st.write("Moving to next page")
+        st.write("Double Click")
         #st.write(professions_ouput)
         #st.session_state.skills_ouput = skills_ouput
         return True
