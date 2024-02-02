@@ -20,7 +20,6 @@ recording_in_progress = False
 
 
 
-
 def stop_recording():
     st.text("recording stoped")
     
@@ -28,6 +27,7 @@ def stop_recording():
 def set_state(i):
     st.session_state.stage = i
 
+user_answer = ""
 
 def show_page():
     global question
@@ -52,7 +52,7 @@ def show_page():
         question = generate_question(topic, chat_history=chat_history)
         st.session_state.question = question
         st.write(f"Question: {question}")
-        st.button("I know the answer!", on_click=set_state, args=[5])
+        st.button("Start Recording", on_click=set_state, args=[5])
 
     #start recording
     if st.session_state.stage == 5:  
@@ -61,7 +61,7 @@ def show_page():
 
         st.write(f"Question: {st.session_state.question}")
         st.write("Stop recording : only once you can see your answer on screen)")
-        
+        #start = st.button("Start Recording")
         st.session_state.user_answer = ""
         
         stt_button = Button(label="Speak", width=100)
@@ -92,15 +92,16 @@ def show_page():
             refresh_on_update=False,
             override_height=75,
             debounce_time=0)
-
+        
+        global user_answer
         if result:
             if "GET_TEXT" in result:
                 user_answer = user_answer + result.get("GET_TEXT")
                 st.session_state.user_answer = user_answer
-                st.write("recording your answer....")
                 st.write(result.get("GET_TEXT"))
-            
-                
+        else:
+            st.write(user_answer)
+            st.write("no results")
 
 
         stop_button = st.button("Stop Recording ", on_click=set_state, args=[6])
