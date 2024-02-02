@@ -52,7 +52,7 @@ def show_page():
         question = generate_question(topic, chat_history=chat_history)
         st.session_state.question = question
         st.write(f"Question: {question}")
-        st.button("Start Recording", on_click=set_state, args=[5])
+        st.button("I know the answer!", on_click=set_state, args=[5])
 
     #start recording
     if st.session_state.stage == 5:  
@@ -97,7 +97,10 @@ def show_page():
             if "GET_TEXT" in result:
                 user_answer = user_answer + result.get("GET_TEXT")
                 st.session_state.user_answer = user_answer
+                st.write("recording your answer....")
                 st.write(result.get("GET_TEXT"))
+            
+                
 
 
         stop_button = st.button("Stop Recording ", on_click=set_state, args=[6])
