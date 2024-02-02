@@ -22,7 +22,6 @@ recording_in_progress = False
 
 
 def stop_recording():
-    start_recording(False)
     st.text("recording stoped")
     
 
