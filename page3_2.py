@@ -3,6 +3,9 @@
 import streamlit as st
 from qna_1 import *
 import speech_recognition as sr
+from bokeh.models.widgets import Button
+from bokeh.models import CustomJS
+from streamlit_bokeh_events import streamlit_bokeh_events
 
 # Obtain audio from the microphone
 recognizer = sr.Recognizer()
@@ -15,6 +18,8 @@ accuracy = 0
 # Variable to check if recording is in progress
 recording_in_progress = False
 
+
+## add code here
 def start_recording(recording_in_progress):
     user_output = ""
     print("Recoding started")
@@ -81,16 +86,48 @@ def show_page():
 
         st.write(f"Question: {st.session_state.question}")
         st.write("Stop recording : only once you can see your answer on screen)")
-        start = st.button("Start Recording")
+        #start = st.button("Start Recording")
         st.session_state.user_answer = ""
+        
+        stt_button = Button(label="Speak", width=100)
+
+        stt_button.js_on_event("button_click", CustomJS(code="""
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+        
+            recognition.onresult = function (e) {
+                var value = "";
+                for (var i = e.resultIndex; i < e.results.length; ++i) {
+                    if (e.results[i].isFinal) {
+                        value += e.results[i][0].transcript;
+                    }
+                }
+                if ( value != "") {
+                    document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: value}));
+                }
+            }
+            recognition.start();
+            """))
+
+        result = streamlit_bokeh_events(
+            stt_button,
+            events="GET_TEXT",
+            key="listen",
+            refresh_on_update=False,
+            override_height=75,
+            debounce_time=0)
+
+        if result:
+            if "GET_TEXT" in result:
+                user_answer = user_answer + result.get("GET_TEXT")
+                st.session_state.user_answer = user_answer
+                st.write(result.get("GET_TEXT"))
+
+
         stop_button = st.button("Stop Recording ", on_click=set_state, args=[6])
-        if start:
-            st.text("Recording in progress...")
-            recording_in_progress = True
-            
-            user_answer = start_recording(True)
-            print(user_answer)
-            st.session_state.user_answer = user_answer +""
+
+
 
         
     # stop recording
