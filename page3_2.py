@@ -19,31 +19,7 @@ accuracy = 0
 recording_in_progress = False
 
 
-## add code here
-def start_recording(recording_in_progress):
-    user_output = ""
-    print("Recoding started")
-    # Infinite loop for continuous recording
-    chunk_count = 0 # Adjust the duration of each recording chunk
 
-    # Infinite loop for continuous recording
-    
-    with sr.Microphone() as source:
-        #st.text("Say something!")
-        if recording_in_progress:
-
-            try:
-                # Listen for the specified chunk duration
-                audio = recognizer.listen(source,  timeout=5)
-                recognized_text = recognizer.recognize_google(audio)
-                st.text(" - " + recognizer.recognize_google(audio))
-                user_output += recognized_text + " "
-            except sr.UnknownValueError:
-                st.text("Could not understand audio")
-            except sr.WaitTimeoutError:
-                st.text("Timeout. No speech detected in the last")
-
-    return user_output
 
 def stop_recording():
     start_recording(False)
@@ -86,7 +62,7 @@ def show_page():
 
         st.write(f"Question: {st.session_state.question}")
         st.write("Stop recording : only once you can see your answer on screen)")
-        #start = st.button("Start Recording")
+        
         st.session_state.user_answer = ""
         
         stt_button = Button(label="Speak", width=100)
