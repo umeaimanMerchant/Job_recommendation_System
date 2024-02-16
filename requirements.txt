@@ -1,3 +1,4 @@
+streamlit-authenticator
 Jinja2 >=2.9
 contourpy >=1
 packaging >=16.8
