@@ -57,7 +57,7 @@ def show_page():
             
             question = generate_question(topic, difficulty=st.session_state.selected_difficulty, chat_history=chat_history)
             st.session_state.question = question
-            st.write(fQuestion No.: {no_question}"))
+            st.write(f"Question No.: {no_question}")
             st.write(f"Question: {question}")
             st.button("Start Recording", on_click=set_state, args=[5])
 
