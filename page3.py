@@ -14,7 +14,6 @@ recognizer = sr.Recognizer()
 question = ""
 user_answer = ""
 accuracy = 0
-no_question = 0
 
 # Variable to check if recording is in progress
 recording_in_progress = False
@@ -47,18 +46,17 @@ def show_page():
     # create question
     if st.session_state.stage == 4: 
         chat_history = read_chat_log()[:1000]
-        global no_question   
-        if st.session_state.num_questions < no_question:
+          
+        if st.session_state.num_questions < 1:
             st.write("Intervista: That's the end of our questions. Thank you for participating!")
             if st.button("Exit"):
                 st.session_state.page_index = 4
         else:
-            no_question = no_question+1
             
             question = generate_question(topic, difficulty=st.session_state.selected_difficulty, chat_history=chat_history)
             st.session_state.question = question
-            st.write(f"Question No.: {no_question}")
             st.write(f"Question: {question}")
+            st.session_state.num_questions = st.session_state.num_questions - 1
             st.button("Start Recording", on_click=set_state, args=[5])
 
     #start recording
