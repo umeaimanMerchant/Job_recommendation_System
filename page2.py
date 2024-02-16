@@ -2,12 +2,16 @@ import streamlit as st
 import math
 
 def show_page():
-    st.title("AI Driven Mock Interview Experience")
-    st.header("Current Skillset:")
+    st.header("Welcome to Intervista")
+    st.text("Elevate Your Skills with Personalized Interview Training")
+    back = st.button("Back")
+
+    if back:
+        st.session_state.home = 5
 
     # Initialize the list only once using st.session_state
     if 'my_list' not in st.session_state:
-        st.session_state.my_list = st.session_state.skills_ouput
+        st.session_state.my_list = []
 
     # Specify the number of columns
     num_columns = 3
@@ -60,7 +64,9 @@ def show_page():
     # "Next" button to go to the next Streamlit app
     if st.button("Next", key="next_button"):
         # You can replace this with the code to launch the next Streamlit app
-        st.session_state.page_index = 2
+        st.session_state.skills_ouput = st.session_state.my_list
+        st.session_state.stage = 0
+        st.session_state.page_index = 3
         #st.success("Going to the next Streamlit app.")
 
         st.write("Double Click")
