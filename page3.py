@@ -47,7 +47,7 @@ def show_page():
     if st.session_state.stage == 4: 
         chat_history = read_chat_log()[:1000]
           
-        if st.session_state.num_questions < 1:
+        if st.session_state.num_questions < 0:
             st.write("Intervista: That's the end of our questions. Thank you for participating!")
             if st.button("Exit"):
                 st.session_state.page_index = 4
