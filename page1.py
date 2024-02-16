@@ -1,14 +1,4 @@
 """
-version 1.0:
-QnA - 
-    1. based on job description
-    2. based on resume
-
-Output - 
-    1. type of question made by AI
-
-Part 1:
-    upload resume (list of skills & professions + add or remove skills)
 """
 
 import streamlit as st
@@ -73,28 +63,86 @@ def extract_profession_from_resume(resume_text):
 
 ## streamlit app
 def show_page():
-    st.title("AI Driven Mock Interview Experience")
-    st.text("Elevate Your Skills with Personalized Questions")
-    jd=st.text_area("Paste the Job Description (WIP)")
-    uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
+    st.header("Welcome to Intervista")
+    #st.text("Elevate Your Skills with Personalized Interview Training")
 
-    submit = st.button("Submit")
+    if 'home' not in st.session_state:
+        st.session_state.home = 0
 
-    if submit:
-        if uploaded_file is not None:
-            text=input_pdf_text(uploaded_file)
-            st.success(f"File uploaded Successfully!")
-            
-            skills_ouput = extract_skills_from_resume(text)
-            professions_ouput = extract_profession_from_resume(text)
+    # choose type of input
+    if st.session_state.home == 5: 
 
-            #st.write("Moving to next page")
-            #st.write(professions_ouput)
-            st.session_state.skills_ouput = skills_ouput + professions_ouput
-            st.session_state.page_index = 1
+        if st.session_state["authentication_status"]:            
+            st.write(f'Welcome *{st.session_state["name"]}*')
+            st.text("Elevate Your Skills with Personalized Interview Training")
+            resume = st.button("Interview me on Resume and Job Description")
+            if resume:
+                st.session_state.home = 6
 
-    if st.button("Add skills Manually"):
-        st.session_state.skills_ouput = []
-        st.session_state.page_index = 1
+            position = st.button("Interview me on Skills")
+            if position:
+                st.session_state.page_index = 1
+
+        else:
+            st.write("Please log in or Sign up!")
 
 
+
+
+
+    # About section****
+    if st.session_state.home == 1: 
+        st.title("Intervista:")
+        
+
+
+   
+
+    ##  Resume 
+    if st.session_state.home == 6:     
+        st.text("Elevate Your Skills with Personalized Interview Training")   
+        back = st.button("Back")
+
+        if back:
+            st.session_state.home = 5
+
+         ## Take input job desc****
+
+        jd=st.text_area("Paste the Job Description")
+
+        # Resume
+        uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
+
+        submit = st.button("Next")
+
+        if submit:
+            jd_skills_ouput=[]
+            resume_skills_ouput = []
+            if jd != "":
+                print(jd)
+                skills_ouput = extract_skills_from_resume(jd)
+                professions_ouput = extract_profession_from_resume(jd)
+
+                #st.write("Moving to next page")
+                #st.write(professions_ouput)
+                jd_skills_ouput = skills_ouput + professions_ouput
+                print(jd_skills_ouput)
+            if uploaded_file is not None:
+                text=input_pdf_text(uploaded_file)
+                st.success(f"File uploaded Successfully!")
+                
+                skills_ouput = extract_skills_from_resume(text)
+                professions_ouput = extract_profession_from_resume(text)
+                resume_skills_ouput = skills_ouput + professions_ouput
+                print(resume_skills_ouput)
+                #st.write("Moving to next page")
+                #st.write(professions_ouput)
+
+            skills = jd_skills_ouput + resume_skills_ouput
+            if len(skills) >0:
+                st.session_state.skills_ouput = skills
+                print("move to 2")
+                st.session_state.stage = 0
+                st.session_state.page_index = 3
+            else:
+                st.write("Please upload resume or enter job description!")
