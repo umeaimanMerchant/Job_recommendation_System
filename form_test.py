@@ -14,10 +14,7 @@ def show_page():
 
     # Custom button to add missing skills
     if st.button("Add Custom Skill"):
-        custom_skill = st.text_input("Enter custom skill:")
-        if st.button("Enter"):
-            st.write(custom_skill)
-            skills.append(custom_skill)
+        st.session_state.page_index = 1
 
     # Display selected options
     #st.write("Selected Skills:", selected_skills)
